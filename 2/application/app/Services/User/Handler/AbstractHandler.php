@@ -8,7 +8,7 @@ use App\Services\User\Repository\UserRepositoryInterface;
 /**
  * Class AbstractHandler
  *
- * @package App\Services\Item\Handler
+ * @package App\Services\User\Handler
  */
 abstract class AbstractHandler
 {

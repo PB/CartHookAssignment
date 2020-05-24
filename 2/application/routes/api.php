@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::resource('users', 'UserController')->only([
     'index', 'show'
 ]);
+Route::get('/users/{userId}/posts', 'UserPostController@index');

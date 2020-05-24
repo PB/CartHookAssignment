@@ -15,4 +15,12 @@ class User extends Model
         'address' => 'array',
         'company' => 'array',
     ];
+
+    /**
+     * Get the post for the user.
+     */
+    public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }
