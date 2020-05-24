@@ -54,10 +54,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function showUsers(int $limit = 10): array
     {
-        $users = DB::table('users')
-            ->limit($limit)
-            ->orderBy('id', 'ASC')
-            ->get();
+        $users = User::limit($limit)->orderBy('id', 'ASC')->get();
         // fallback if DB is empty
         if ($users->isEmpty()) {
             $users = $this->jsphRepository->showUsers($limit);
