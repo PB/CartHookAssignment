@@ -30,4 +30,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'jsonplaceholder' => [
+        'base_uri' => env('JSON_PLACE_HOLDER_HOST'),
+        'headers' => [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ]
+    ]
 ];
