@@ -22,7 +22,7 @@ class ShowUserHandler extends AbstractHandler
     {
         return [
             'command' => $command,
-            'user' => $this->userRepository->showUser($command->getUserId())
+            'user' => $this->userRepository->showUser((int)$command->getUserId())
         ];
     }
 }

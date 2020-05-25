@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\User\Repository\UserRepository;
 use App\Services\User\UserServiceInterface;
 use Illuminate\Http\JsonResponse;
 
@@ -38,14 +37,18 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $userId
+     * @param mixed $userId
      *
      * @return JsonResponse
      */
-    public function show(int $userId): JsonResponse
+    public function show($userId): JsonResponse
     {
-        $data = $this->userService->showUser(['userId' => $userId]);
+        try {
+            $data = $this->userService->showUser(['userId' => $userId]);
 
-        return response()->json($data['user'] ?? []);
+            return response()->json($data['user'] ?? []);
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            return response()->json([], JsonResponse::HTTP_NOT_FOUND);
+        }
     }
 }

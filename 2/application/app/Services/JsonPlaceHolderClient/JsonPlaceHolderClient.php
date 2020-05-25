@@ -47,9 +47,6 @@ class JsonPlaceHolderClient
 
     private static function handleResponse(ResponseInterface $response): array
     {
-        if ($response->getStatusCode() >= 400) {
-            throw new \InvalidArgumentException('fix this');
-        }
         try {
             return \json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {

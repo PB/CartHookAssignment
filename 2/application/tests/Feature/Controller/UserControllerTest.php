@@ -47,7 +47,7 @@ class UserControllerTest extends TestCase
      */
     public function testShowUserNotFound(): void
     {
-        $response = $this->json('GET', '/api/user/10000');
+        $response = $this->json('GET', '/api/users/10000');
 
         $response->assertStatus(404);
     }
@@ -59,8 +59,8 @@ class UserControllerTest extends TestCase
      */
     public function testShowUserInvalid(): void
     {
-        $response = $this->json('GET', '/api/user/test');
+        $response = $this->json('GET', '/api/users/test');
 
-        $response->assertStatus(404);
+        $response->assertStatus(400);
     }
 }

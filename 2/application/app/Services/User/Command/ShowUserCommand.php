@@ -15,7 +15,7 @@ class ShowUserCommand implements Arrayable
     /**
      * @var int
      */
-    private int $userId;
+    private $userId;
 
     /**
      * ShowUserCommand constructor.
@@ -38,9 +38,9 @@ class ShowUserCommand implements Arrayable
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getUserId(): int
+    public function getUserId()
     {
         return $this->userId;
     }

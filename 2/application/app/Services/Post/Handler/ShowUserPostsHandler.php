@@ -22,7 +22,7 @@ class ShowUserPostsHandler extends AbstractHandler
     {
         return [
             'command' => $command,
-            'posts' => $this->postRepository->showUserPosts($command->getUserId())
+            'posts' => $this->postRepository->showUserPosts((int)$command->getUserId())
         ];
     }
 }

@@ -31,10 +31,14 @@ class UserPostController extends Controller
      *
      * @return JsonResponse
      */
-    public function index(int $userId): JsonResponse
+    public function index($userId): JsonResponse
     {
-        $data = $this->postService->showUserPosts(['userId' => $userId]);
+        try {
+            $data = $this->postService->showUserPosts(['userId' => $userId]);
 
-        return response()->json($data['posts'] ?? []);
+            return response()->json($data['posts'] ?? []);
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            return response()->json([], JsonResponse::HTTP_NOT_FOUND);
+        }
     }
 }

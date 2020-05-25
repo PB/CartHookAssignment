@@ -13,9 +13,9 @@ use Illuminate\Contracts\Support\Arrayable;
 class ShowUserPostsCommand implements Arrayable
 {
     /**
-     * @var int
+     * @var mixed
      */
-    private int $userId;
+    private $userId;
 
     /**
      * ShowUserCommand constructor.
@@ -38,9 +38,9 @@ class ShowUserPostsCommand implements Arrayable
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getUserId(): int
+    public function getUserId()
     {
         return $this->userId;
     }
