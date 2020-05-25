@@ -1,0 +1,10 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+parameters:
+    paths:
+        - app
+    level: 8
+    ignoreErrors:
+        - '#Parameter \#1 \$command of method Joselfonseca\\LaravelTactician\\CommandBusInterface::dispatch\(\) expects object, string given.#'
+# mistake in vendor package
+    checkMissingIterableValueType: false
