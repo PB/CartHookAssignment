@@ -52,6 +52,7 @@ services:
     networks:
       - app-network
 
+  #Redis Service
   redis:
     image: redis:5.0.8
     container_name: ${PROJECT_NAME}-redis
