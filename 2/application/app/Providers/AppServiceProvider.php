@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Services\ApiClient;
 use App\Services\Comment\CommentService;
 use App\Services\Comment\CommentServiceInterface;
 use App\Services\Comment\Repository\CommentRepository;
 use App\Services\Comment\Repository\CommentRepositoryInterface;
+use App\Services\JsonPlaceHolderClient\JsonPlaceHolderClient;
 use App\Services\Post\Repository\PostRepository;
 use App\Services\Post\Repository\PostRepositoryInterface;
 use App\Services\User\Repository\CachedUserRepository;
@@ -31,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PostRepositoryInterface::class, PostRepository::class);
         $this->app->bind(CommentServiceInterface::class, CommentService::class);
         $this->app->bind(CommentRepositoryInterface::class, CommentRepository::class);
+        $this->app->bind(ApiClient::class, JsonPlaceHolderClient::class);
     }
 
     /**

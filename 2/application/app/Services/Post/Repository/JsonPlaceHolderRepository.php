@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Services\Post\Repository;
 
-use App\Services\JsonPlaceHolderClient\JsonPlaceHolderClient;
+use App\Services\ApiClient;
 use App\Services\Post\Exceptions\NotFoundException;
 
 /**
@@ -14,18 +14,16 @@ use App\Services\Post\Exceptions\NotFoundException;
 class JsonPlaceHolderRepository implements PostRepositoryInterface
 {
     /**
-     * @var JsonPlaceHolderClient
+     * @var ApiClient
      */
-    private JsonPlaceHolderClient $client;
-
-    // todo: interface
+    private ApiClient $client;
 
     /**
      * JsonPlaceHolderRepository constructor.
      *
-     * @param JsonPlaceHolderClient $client
+     * @param ApiClient $client
      */
-    public function __construct(JsonPlaceHolderClient $client)
+    public function __construct(ApiClient $client)
     {
         $this->client = $client;
     }

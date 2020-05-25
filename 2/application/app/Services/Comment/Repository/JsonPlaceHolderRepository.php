@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Services\Comment\Repository;
 
 use App\Services\Comment\Exceptions\NotFoundException;
-use App\Services\JsonPlaceHolderClient\JsonPlaceHolderClient;
+use App\Services\ApiClient;
 
 /**
  * Class JsonPlaceHolderRepository
@@ -14,18 +14,16 @@ use App\Services\JsonPlaceHolderClient\JsonPlaceHolderClient;
 class JsonPlaceHolderRepository implements CommentRepositoryInterface
 {
     /**
-     * @var JsonPlaceHolderClient
+     * @var ApiClient
      */
-    private JsonPlaceHolderClient $client;
-
-    // todo: interface
+    private ApiClient $client;
 
     /**
      * JsonPlaceHolderRepository constructor.
      *
-     * @param JsonPlaceHolderClient $client
+     * @param ApiClient $client
      */
-    public function __construct(JsonPlaceHolderClient $client)
+    public function __construct(ApiClient $client)
     {
         $this->client = $client;
     }
