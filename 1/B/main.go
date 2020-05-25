@@ -9,7 +9,7 @@ import (
 
 func main() {
 	if len(os.Args) != 3 {
-		fmt.Println("Please enter target directory and file: <target_directory>")
+		fmt.Println("Please enter target directory and file: <target_directory> <file>")
 		os.Exit(0)
 	}
 
