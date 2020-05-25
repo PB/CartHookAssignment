@@ -2,8 +2,8 @@
 
 ### The main idea
 I decided to use CQS pattern, mostly because code gets more readable and more trustworthy. 
-The read & write operations are separate from each other. This business logic will should reduce number of errors and improve scalability of the application.
-It should be possible to move operations like `storeComannd`, `showComannd` (reed & write) to separate services (microservices).
+The read & write operations are separate from each other. This business logic should reduce number of errors and improve scalability of the application.
+It should be possible to move operations like `showComannd`, `storeComannd` (reed & write) to separate services (microservices).
 
  ### Database design
  The database has 3 tables with foreign keys. There is one unique index on user emails. There is also one text index on post title (because an option to search posts by titles).
@@ -12,7 +12,7 @@ It should be possible to move operations like `storeComannd`, `showComannd` (ree
  Beside that it is a quite normal DB. 
  
  ### Other info
- There are few service providers that can be switch. For example: 
+ There are few service providers that can be switched. For example: 
  - `JsonPlaceHolderRepository` can be replaced by `UserRepository` - this will cause the database to be used
  - `UserRepository` can be replaced by `CacheUserRepository` - this will cause searching user data first in redis
  
