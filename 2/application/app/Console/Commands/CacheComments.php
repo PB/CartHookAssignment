@@ -52,17 +52,22 @@ class CacheComments extends Command
      */
     public function handle()
     {
-        //todo: that should be also in command bus
-        Comment::truncate();
-        $posts = $this->client->getPosts();
-        $bar = $this->output->createProgressBar(count($posts));
-        $bar->start();
-        foreach ($posts as $post) {
-            $this->performTask($post['id']);
-            $bar->advance();
+        try {
+            // truncate table to avoid duplicates (demo purposes only)
+            Comment::truncate();
+
+            $posts = $this->client->getPosts();
+            $bar = $this->output->createProgressBar(count($posts));
+            $bar->start();
+            foreach ($posts as $post) {
+                $this->performTask($post['id']);
+                $bar->advance();
+            }
+            $bar->finish();
+            $this->info("\nComments data cached");
+        } catch (\Throwable $t) {
+            $this->warn("\nUnable to fetch data. Please try again.");
         }
-        $bar->finish();
-        $this->info("\nComments data cached");
     }
 
     /**

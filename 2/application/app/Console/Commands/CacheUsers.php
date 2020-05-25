@@ -50,7 +50,11 @@ class CacheUsers extends Command
      */
     public function handle()
     {
-        $this->userService->storeUsers($this->client->getUsers());
-        $this->info('Users data cached');
+        try {
+            $this->userService->storeUsers($this->client->getUsers());
+            $this->info('Users data cached');
+        } catch (\Throwable $t) {
+            $this->warn("\nUnable to fetch data. Please try again.");
+        }
     }
 }

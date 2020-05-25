@@ -52,17 +52,22 @@ class CachePosts extends Command
      */
     public function handle()
     {
-        //todo: that should be also in command bus
-        Post::truncate();
-        $users = $this->client->getUsers();
-        $bar = $this->output->createProgressBar(count($users));
-        $bar->start();
-        foreach ($users as $user) {
-            $this->performTask($user['id']);
-            $bar->advance();
+        try {
+            // truncate table to avoid duplicates (demo purposes only)
+            Post::truncate();
+
+            $users = $this->client->getUsers();
+            $bar = $this->output->createProgressBar(count($users));
+            $bar->start();
+            foreach ($users as $user) {
+                $this->performTask($user['id']);
+                $bar->advance();
+            }
+            $bar->finish();
+            $this->info("\nPosts data cached");
+        } catch (\Throwable $t) {
+            $this->warn("\nUnable to fetch data. Please try again.");
         }
-        $bar->finish();
-        $this->info("\nPosts data cached");
     }
 
     /**
