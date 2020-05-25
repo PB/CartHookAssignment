@@ -65,6 +65,9 @@ class CachePosts extends Command
         $this->info("\nPosts data cached");
     }
 
+    /**
+     * @param int $userId
+     */
     private function performTask(int $userId): void
     {
         $limit = is_string($this->option('limit'))? $this->option('limit') : 50;
