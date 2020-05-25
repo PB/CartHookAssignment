@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace App\Services\Post\Validator;
 
-use App\Services\User\Exceptions\ValidationException;
+use App\Services\Post\Exceptions\ValidationException;
 use Illuminate\Support\Facades\Validator;
 use League\Tactician\Middleware;
 
 /**
- * Class StoreUserPostValidator
+ * Class StoreUserPostsValidator
  *
  * @package App\Services\Post\Validator
  */

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Services\Post\Repository;
 
 use App\Services\JsonPlaceHolderClient\JsonPlaceHolderClient;
+use App\Services\Post\Exceptions\NotFoundException;
 
 /**
  * Class JsonPlaceHolderRepository
@@ -33,10 +34,16 @@ class JsonPlaceHolderRepository implements PostRepositoryInterface
      * @param int $userId
      *
      * @return array
+     * @throws NotFoundException
      */
     public function showUserPosts(int $userId): array
     {
-        return $this->client->getUserPosts($userId);
+        $posts = $this->client->getUserPosts($userId);
+        if (empty($posts)) {
+            throw new NotFoundException(['Comments not found']);
+        }
+
+        return  $posts;
     }
 
     /**

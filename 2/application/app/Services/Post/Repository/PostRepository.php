@@ -32,6 +32,7 @@ class PostRepository implements PostRepositoryInterface
      * @param int $userId
      *
      * @return array
+     * @throws \App\Services\Post\Exceptions\NotFoundException
      */
     public function showUserPosts(int $userId): array
     {

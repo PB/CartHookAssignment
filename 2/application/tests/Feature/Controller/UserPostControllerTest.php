@@ -38,8 +38,7 @@ class UserPostControllerTest extends TestCase
     {
         $response = $this->json('GET', '/api/users/10000/posts');
 
-        // jsonplaceholder returns 200 instead of 404
-        $response->assertStatus(200);
+        $response->assertStatus(404);
     }
 
     /**

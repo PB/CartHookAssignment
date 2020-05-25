@@ -32,6 +32,8 @@ class PostService implements PostServiceInterface
     public function __construct(CommandBusInterface $bus)
     {
         $this->bus = $bus;
+        $this->bus->addHandler(StoreUserPostsCommand::class, StoreUserPostsHandler::class);
+        $this->bus->addHandler(ShowUserPostsCommand::class, ShowUserPostsHandler::class);
     }
 
     /**
@@ -39,7 +41,6 @@ class PostService implements PostServiceInterface
      */
     public function storePosts(array $data = [])
     {
-        $this->bus->addHandler(StoreUserPostsCommand::class, StoreUserPostsHandler::class);
         return $this->bus->dispatch(StoreUserPostsCommand::class, $data, [StoreUserPostsValidator::class]);
     }
 
@@ -48,7 +49,6 @@ class PostService implements PostServiceInterface
      */
     public function showUserPosts(array $data = [])
     {
-        $this->bus->addHandler(ShowUserPostsCommand::class, ShowUserPostsHandler::class);
         return $this->bus->dispatch(ShowUserPostsCommand::class, $data, [ShowUserPostsValidator::class]);
     }
 }
