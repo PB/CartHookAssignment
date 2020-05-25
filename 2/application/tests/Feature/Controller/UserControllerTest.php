@@ -3,15 +3,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers;
 
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UserControllerTest extends TestCase
 {
-    use RefreshDatabase;
-    use WithFaker;
-
+    use DatabaseMigrations;
     /**
      * Test index action
      *
