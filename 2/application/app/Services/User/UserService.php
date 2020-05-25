@@ -34,6 +34,9 @@ class UserService implements UserServiceInterface
     public function __construct(CommandBusInterface $bus)
     {
         $this->bus = $bus;
+        $this->bus->addHandler(StoreUserCommand::class, StoreUserHandler::class);
+        $this->bus->addHandler(ShowUsersCommand::class, ShowUsersHandler::class);
+        $this->bus->addHandler(ShowUserCommand::class, ShowUserHandler::class);
     }
 
     /**
@@ -41,7 +44,6 @@ class UserService implements UserServiceInterface
      */
     public function storeUsers(array $data = [])
     {
-        $this->bus->addHandler(StoreUserCommand::class, StoreUserHandler::class);
         return $this->bus->dispatch(StoreUserCommand::class, $data, [StoreUserValidator::class]);
     }
 
@@ -50,7 +52,6 @@ class UserService implements UserServiceInterface
      */
     public function showUsers(array $data = [])
     {
-        $this->bus->addHandler(ShowUsersCommand::class, ShowUsersHandler::class);
         return $this->bus->dispatch(ShowUsersCommand::class, $data, []);
     }
 
@@ -59,7 +60,6 @@ class UserService implements UserServiceInterface
      */
     public function showUser(array $data = [])
     {
-        $this->bus->addHandler(ShowUserCommand::class, ShowUserHandler::class);
         return $this->bus->dispatch(ShowUserCommand::class, $data, [ShowUserValidator::class]);
     }
 }
