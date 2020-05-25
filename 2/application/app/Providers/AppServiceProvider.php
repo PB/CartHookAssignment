@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Services\Comment\CommentService;
+use App\Services\Comment\CommentServiceInterface;
+use App\Services\Comment\Repository\CommentRepository;
+use App\Services\Comment\Repository\CommentRepositoryInterface;
+use App\Services\Comment\Repository\JsonPlaceHolderRepository;
 use App\Services\Post\Repository\PostRepository;
 use App\Services\Post\Repository\PostRepositoryInterface;
 use App\Services\User\Repository\UserRepository;
@@ -25,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(PostServiceInterface::class, PostService::class);
         $this->app->bind(PostRepositoryInterface::class, PostRepository::class);
+        $this->app->bind(CommentServiceInterface::class, CommentService::class);
+        $this->app->bind(CommentRepositoryInterface::class, CommentRepository::class);
     }
 
     /**

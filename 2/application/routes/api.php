@@ -18,3 +18,4 @@ Route::resource('users', 'UserController')->only([
     'index', 'show'
 ]);
 Route::get('/users/{userId}/posts', 'UserPostController@index');
+Route::get('/posts/{postId}/comments', 'PostCommentController@index');
