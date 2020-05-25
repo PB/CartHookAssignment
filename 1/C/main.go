@@ -11,7 +11,7 @@ import (
 func main() {
 	slice := generateSlice(11, 99)
 	fmt.Println("Unsorted array: ", slice)
-	insertionSort(slice, false)
+	insertionSort(slice, true)
 	fmt.Println("Sorted array: ", slice)
 }
 
